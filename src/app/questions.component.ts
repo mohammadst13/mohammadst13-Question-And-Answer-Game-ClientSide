@@ -7,11 +7,10 @@ import { ApiService } from './api.service';
 })
 
 export class QuestionsComponent{
+
+  constructor ( private api : ApiService ){};
+
   questions ;
-
-  constructor(private api: ApiService){}
-
-
 
   ngOnInit()
   {
