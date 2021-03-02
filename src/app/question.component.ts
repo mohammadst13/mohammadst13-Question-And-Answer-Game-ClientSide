@@ -11,9 +11,13 @@ constructor(private api: ApiService){}
 
 question = {};
 
+ngOnInit()
+{
+  this.api.questionSekected.subscribe(question => this.question = question);
+}
+
   post(question) {
     console.log(question);
-
-this.api.postQuestion(question);
+    this.api.postQuestion(question);
   }
 }
