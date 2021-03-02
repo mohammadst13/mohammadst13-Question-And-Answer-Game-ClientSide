@@ -23,6 +23,15 @@ export class ApiService {
     return this.http.get('http://localhost:8238/api/Questions');
   }
 
+  putQuestion(question)
+  {
+    this.http.put('http://localhost:8238/api/Questions/'+question.id, question)
+    .subscribe(res=> {
+      console.log(res);
+
+    });
+  }
+
   selectQuestion(question)
   {
     this.selectedQuestion.next(question);
