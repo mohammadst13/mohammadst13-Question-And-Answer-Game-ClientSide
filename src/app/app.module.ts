@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatButtonModule , MatCardModule , MatInputModule, MatListModule , MatToolbarModule} from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,24 +16,27 @@ import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
+import { RegisterComponent } from './register.component';
 
 const routes = [
   {path: '' , component: HomeComponent},
   {path: 'question' , component: QuestionComponent},
   {path: 'question/:quizid' , component: QuestionComponent},
   {path: 'questions' , component: QuestionsComponent},
+  {path: 'register' , component: RegisterComponent},
   {path: 'quiz' , component: QuizComponent},
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent , HomeComponent, NavComponent , QuizComponent , QuizzesComponent
+    AppComponent, QuestionComponent, QuestionsComponent , HomeComponent, NavComponent , RegisterComponent , QuizComponent , QuizzesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
