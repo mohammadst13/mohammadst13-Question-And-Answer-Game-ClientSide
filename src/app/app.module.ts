@@ -20,6 +20,7 @@ import { QuizzesComponent } from './quizzes.component';
 const routes = [
   {path: '' , component: HomeComponent},
   {path: 'question' , component: QuestionComponent},
+  {path: 'question/:quizid' , component: QuestionComponent},
   {path: 'questions' , component: QuestionsComponent},
   {path: 'quiz' , component: QuizComponent},
 ];
