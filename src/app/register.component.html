@@ -1,6 +1,6 @@
 <mat-card>
 
-  <form [formGroup]="form" (ngSubmit)="register()">
+  <form [formGroup]="form" (ngSubmit)="auth.register(form.value)">
     <mat-form-field class="fullWidth">
       <input  matInput placeholder="Email"  type="email" formControlName="email"/>
     </mat-form-field>

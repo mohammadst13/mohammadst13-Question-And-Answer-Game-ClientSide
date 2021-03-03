@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MatButtonModule , MatCardModule , MatInputModule, MatListModule , MatToolbarModule} from '@angular/material';
@@ -10,13 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {QuestionComponent} from './question.component';
 import { ApiService } from './api.service';
-import {HttpClientModule} from '@angular/common/http';
 import { QuestionsComponent } from './questions.component';
 import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component';
 import { QuizzesComponent } from './quizzes.component';
 import { RegisterComponent } from './register.component';
+import { AuthService } from './auth.service';
+import { AuthInterceptor } from './auth.intercetor';
+
 
 const routes = [
   {path: '' , component: HomeComponent},
@@ -24,12 +27,12 @@ const routes = [
   {path: 'question/:quizid' , component: QuestionComponent},
   {path: 'questions' , component: QuestionsComponent},
   {path: 'register' , component: RegisterComponent},
-  {path: 'quiz' , component: QuizComponent},
+  {path: 'quiz' , component: QuizComponent}
 ];
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent , HomeComponent, NavComponent , RegisterComponent , QuizComponent , QuizzesComponent
+    AppComponent, QuestionComponent, QuestionsComponent , HomeComponent, NavComponent , QuizComponent , RegisterComponent , QuizzesComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,11 @@ const routes = [
     MatListModule,
     MatToolbarModule
   ],
-  providers: [ApiService],
+  providers: [ApiService , AuthService , {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true
+  }] ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
