@@ -18,6 +18,16 @@ export class ApiService {
     });
   }
 
+  postQuiz(quiz)
+  {
+    console.log(quiz);
+
+    this.http.post('http://localhost:8238/api/Quizs', quiz).subscribe(res => {
+      console.log(res);
+
+    });
+  }
+
   getQuestions()
   {
     return this.http.get('http://localhost:8238/api/Questions');
