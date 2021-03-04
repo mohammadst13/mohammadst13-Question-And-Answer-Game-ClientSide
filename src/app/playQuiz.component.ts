@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { ActivatedRoute } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { FinishedComponent } from './finished.component';
 
 @Component({
   templateUrl: './playQuiz.component.html',
@@ -9,7 +11,7 @@ export class PlayQuizComponent {
   questions;
   quizId;
 
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  constructor(private api: ApiService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.quizId = this.route.snapshot.paramMap.get('quizId');
@@ -44,7 +46,10 @@ export class PlayQuizComponent {
         correct++;
       }
     });
-    console.log(correct);
+    let dialogRef = this.dialog.open(FinishedComponent, {
+      data: {correct , total: this.questions.length}
+    });
+
   }
 }
 function shuffle(a) {
