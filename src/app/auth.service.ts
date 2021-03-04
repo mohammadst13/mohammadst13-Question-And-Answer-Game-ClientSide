@@ -9,7 +9,8 @@ export class AuthService {
 
   register(credentials)
   {
-    this.http.post<any>(`http://localhost:8238/api/Account`,credentials).subscribe(res => {
+    this.http.post(`http://localhost:8238/api/Account`, credentials ,{responseType: 'text'}).subscribe(res => {
+      console.log(res);
       localStorage.setItem('token', res);
     });
   }
