@@ -26,6 +26,11 @@ export class ApiService {
     return this.http.get(`http://localhost:8238/api/Questions/${quizId}`);
   }
 
+  getAllQuizzez()
+  {
+    return this.http.get(`http://localhost:8238/api/Quizs/all`);
+  }
+
   putQuestion(question)
   {
     this.http.put('http://localhost:8238/api/Questions/'+question.id, question)
